@@ -14,7 +14,6 @@ import javax.swing.JPanel;
 
 
 
-
 public class ListaSeqGUI extends JFrame{
     /**
 	 * 

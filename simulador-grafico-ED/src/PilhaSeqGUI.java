@@ -1,21 +1,19 @@
 import java.awt.Color;
-import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.Image;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
+import javax.swing.UIManager;
+import javax.swing.UIManager.LookAndFeelInfo;
+import java.awt.BorderLayout;
 
 
 public class PilhaSeqGUI extends JDialog {
 
-    private JPanel contentPane;
     private final JPanel contentPanel = new JPanel();
     private static PilhaSequencial pilha = new PilhaSequencial();;
     private JButton[] position = new JButton[8];
@@ -23,24 +21,41 @@ public class PilhaSeqGUI extends JDialog {
 
     public PilhaSeqGUI() {
 
+        try {
+            for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (Exception e) {
+        }
+
     	this.setBounds(100, 100, 1000, 600);
         this.setLocation(250, 50);
         this.setTitle("Pilha Sequencial");
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         this.setBackground(Color.BLUE);
 
-        contentPane = new JPanel();
-        contentPane.setSize(800, 500);
-        contentPane.setBackground(new Color(255, 165, 0));
-        contentPane.setLayout(null);
+        /*contentPanel = new JPanel();
+        contentPanel.setSize(800, 500);
+        contentPanel.setBackground(new Color(65, 65, 65));
+        contentPanel.setLayout(null);
         this.setVisible(true);
-        this.setContentPane(contentPane);
+        this.setContentPanel(contentPanel);
+        */
+
+        setBounds(300, 100, 950, 500);
+        getContentPane().add(contentPanel, BorderLayout.CENTER);
+        contentPanel.setBackground(new Color(65, 65, 65)); //Cor do Background
+        contentPanel.setLayout(null);
 
         JLabel lblPilha = new JLabel("PILHA SEQUENCIAL");
         lblPilha.setForeground(Color.BLACK);
         lblPilha.setFont(new Font("Courier", Font.BOLD, 18));
-        lblPilha.setBounds(188, 11, 197, 58);
-        getContentPane().add(lblPilha);
+        lblPilha.setBounds(30, 0, 700, 80);
+        lblPilha.setVisible(true);
+        contentPanel.add(lblPilha);
 
 
 
@@ -76,11 +91,11 @@ public class PilhaSeqGUI extends JDialog {
                 }
             }
         });
-        btnPush.setForeground(new Color(51, 51, 51));
-        btnPush.setBackground(new Color(255, 255, 255));
+        btnPush.setForeground(Color.WHITE);
+        btnPush.setBackground(new Color(62, 66, 75));
         btnPush.setFont(new Font("Courier", Font.PLAIN, 16));
-        btnPush.setBounds(115, 94, 89, 23);
-        getContentPane().add(btnPush);
+        btnPush.setBounds(30, 130, 115, 30);
+        contentPanel.add(btnPush);
 
         JButton btnPop = new JButton("POP");
         btnPop.addActionListener(new ActionListener() {
@@ -107,11 +122,11 @@ public class PilhaSeqGUI extends JDialog {
                 }
             }
         });
-        btnPop.setForeground(new Color(51, 51, 51));
+        btnPop.setForeground(Color.WHITE);
         btnPop.setFont(new Font("Courier", Font.PLAIN, 16));
-        btnPop.setBackground(new Color(255, 255, 255));
-        btnPop.setBounds(235, 94, 89, 23);
-        getContentPane().add(btnPop);
+        btnPop.setBackground(new Color(62, 66, 75));
+        btnPop.setBounds(30, 180, 115, 30);
+        contentPanel.add(btnPop);
 
         JButton btnTop = new JButton("TOP");
         btnTop.addActionListener(new ActionListener() {
@@ -128,58 +143,59 @@ public class PilhaSeqGUI extends JDialog {
                 }
             }
         });
-        btnTop.setForeground(new Color(51, 51, 51));
+        
+        btnTop.setForeground(Color.WHITE);
         btnTop.setFont(new Font("Courier", Font.PLAIN, 16));
-        btnTop.setBackground(new Color(255, 255, 255));
-        btnTop.setBounds(355, 94, 89, 23);
-        getContentPane().add(btnTop);
+        btnTop.setBackground(new Color(62, 66, 75));
+        btnTop.setBounds(30, 230, 115, 30);
+        contentPanel.add(btnTop);
 
         // Posições da Pilha
 
         position[7] = new JButton("");
         position[7].setBackground(Color.WHITE);
-        position[7].setBounds(164, 236, 233, 43);
-        getContentPane().add(position[7]);
+        position[7].setBounds(500, 50, 200, 50);
+        contentPanel.add(position[7]);
 
         position[6] = new JButton("");
         position[6].setBackground(Color.WHITE);
-        position[6].setBounds(164, 279, 233, 43);
-        getContentPane().add(position[6]);
+        position[6].setBounds(500, 100, 200, 50);
+        contentPanel.add(position[6]);
 
         position[5] = new JButton("");
         position[5].setBackground(Color.WHITE);
-        position[5].setBounds(164, 322, 233, 43);
-        getContentPane().add(position[5]);
+        position[5].setBounds(500, 150, 200, 50);
+        contentPanel.add(position[5]);
 
         position[4] = new JButton("");
         position[4].setBackground(Color.WHITE);
-        position[4].setBounds(164, 365, 233, 43);
-        getContentPane().add(position[4]);
+        position[4].setBounds(500, 200, 200, 50);
+        contentPanel.add(position[4]);
 
         position[3] = new JButton("");
         position[3].setBackground(Color.WHITE);
-        position[3].setBounds(164, 408, 233, 43);
-        getContentPane().add(position[3]);
+        position[3].setBounds(500, 250, 200, 50);
+        contentPanel.add(position[3]);
 
         position[2] = new JButton("");
         position[2].setBackground(Color.WHITE);
-        position[2].setBounds(164, 451, 233, 43);
-        getContentPane().add(position[2]);
+        position[2].setBounds(500, 300, 200, 50);
+        contentPanel.add(position[2]);
 
         position[1] = new JButton("");
         position[1].setBackground(Color.WHITE);
-        position[1].setBounds(164, 494, 233, 43);
-        getContentPane().add(position[1]);
+        position[1].setBounds(500, 350, 200, 50);
+        contentPanel.add(position[1]);
 
         position[0] = new JButton("");
         position[0].setBackground(Color.WHITE);
-        position[0].setBounds(164, 537, 233, 43);
-        getContentPane().add(position[0]);
+        position[0].setBounds(500, 400, 200, 50);
+        contentPanel.add(position[0]);
 
-        setModal(true);
-        setBounds(400, 20, 586, 690);
-        contentPanel.setLayout(new FlowLayout());
-        contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
+        //setModal(true);
+        //setBounds(400, 20, 586, 690);
+        //contentPanel.setLayout(new FlowLayout());
+        //contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
     }
 
 
