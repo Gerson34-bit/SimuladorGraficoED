@@ -291,16 +291,14 @@ public class ABP_GUI extends JDialog {
                     break;
                 }
             }
-            for (int i = 0; i < indice; i++) {
-                if (linhas[i] != null && linhas[i].isVisible()) {
-                    contentPanel.remove(linhas[i]);
-                }
-            }
+           
+      
+               
             this.getContentPane().repaint();
             this.contentPanel.revalidate();
           //  contentPanel.repaint();
             }
-    }
+    
     
     private void removeElementoArray(int index) {
         for (int i = index; i < indice - 1; i++) {
