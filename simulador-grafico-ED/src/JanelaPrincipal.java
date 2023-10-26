@@ -16,6 +16,7 @@ public class JanelaPrincipal extends JFrame {
     private JButton botaoLDE;
     private JButton botaoPilha;
     private JButton botaoFila;
+    private JButton botaoABP;
    
 
     public JanelaPrincipal() {
@@ -117,6 +118,21 @@ public class JanelaPrincipal extends JFrame {
         botaoFila.setFont(new Font("Courier", Font.PLAIN, 16));
         botaoFila.setBounds(375, 310, 250, 30);
         contentPane.add(botaoFila);
+        
+      //Abre a janela da Pilha
+        botaoABP = new JButton("ABP");
+        botaoABP.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+            	ABP_GUI p = new ABP_GUI();
+                p.setVisible(true);
+            }
+        });
+        botaoABP.setForeground(Color.WHITE);
+        botaoABP.setBackground(new Color(62, 66, 75));
+        botaoABP.setFont(new Font("Courier", Font.PLAIN, 16));
+        botaoABP.setBounds(375, 350, 250, 30);
+        contentPane.add(botaoABP);
+
         
        
     }
